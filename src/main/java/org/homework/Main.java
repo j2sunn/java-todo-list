@@ -1,7 +1,10 @@
 package org.homework;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+    public static void main(String[] args) throws Exception {
+        TodoManager todoManager = new TodoManager();
+        TodoUI todoUI = new TodoUI();
+        todoUI.run();
     }
 }
