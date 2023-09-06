@@ -20,7 +20,6 @@ public class TodoUI {
             String input = sc.nextLine();
             option = InputOption.of(input);
 
-
             switch (option) {
                 case INSERT:        //추가
                     insert();
@@ -47,28 +46,43 @@ public class TodoUI {
 
     }
 
-
     private void insert(){
         System.out.println("할 일을 입력하세요.");
         String content = sc.nextLine();
         int id = todoManager.insert(content);
-        System.out.println("할 일이 추가되었습니다. ID:" + id);
+        System.out.println("할 일이 추가되었습니다. ID: " + id);
     }
 
     private void delete(){
         System.out.println("삭제할 ID를 입력하세요.");
-        int id = Integer.parseInt(sc.nextLine());
-            if(todoManager.delete(id)){
-                System.out.println( "할 일이 삭제되었습니다. ID:" + id);
-            } else {
+        int id = -1;
+
+        try{
+           id = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e){
+            System.out.println("올바른 숫자를 입력하세요.");
+            return;
+        }
+
+        if(todoManager.delete(id)){
+                System.out.println( "할 일이 삭제되었습니다. ID: " + id);
+        } else {
                 System.out.println("해당 ID의 할 일이 없습니다.");
-            }
+        }
 
     }
 
     private void select(){
         System.out.println("조회할 ID를 입력하세요.");
-        int id = Integer.parseInt(sc.nextLine());
+        int id = -1;
+
+        try{
+            id = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e){
+            System.out.println("올바른 숫자를 입력하세요.");
+            return;
+        }
+
         String content = todoManager.select(id);
         if(content != null){
             System.out.println("할 일 ID: " + id + " 내용: " + content);

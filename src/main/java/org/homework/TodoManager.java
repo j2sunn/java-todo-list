@@ -10,22 +10,18 @@ public class TodoManager {
 
     public int insert(String content) {
         todolist.put(id, content);
-        int insertId = id;
-        id ++;
-        return insertId;
+        return id++;
     }
 
     public boolean delete(int id) {
         if(todolist.containsKey(id)){
-            todolist.remove(id);
-            return true;
+            return todolist.remove(id) != null;
         } else {
             return false;
         }
     }
 
-
     public String select(int id) {
-        return todolist.getOrDefault(id, null);
+        return todolist.getOrDefault(id, "해당 ID의 할 일이 없습니다.");
     }
 }
