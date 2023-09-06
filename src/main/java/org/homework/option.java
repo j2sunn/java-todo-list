@@ -7,7 +7,7 @@ enum InputOption {
     SELECT("3"),    //3. 조회
     EXIT("4"),
 
-    invalidInput("");
+    INVALID_INPUT("");
 
     //4. 종료
 
@@ -24,7 +24,7 @@ enum InputOption {
                 return value;
             }
         }
-        return invalidInput ;
+        return INVALID_INPUT ;
     }
 
 
