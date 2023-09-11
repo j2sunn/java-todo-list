@@ -39,6 +39,7 @@ public class TodoUI {
                 case INVALID_INPUT:
                     System.out.println("잘못된 입력입니다.");
                     break;
+
             }
         } while (true);
     }
