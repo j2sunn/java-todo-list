@@ -19,5 +19,4 @@ public class TodoManager {
         return todolist.getOrDefault(id, "해당 ID의 할 일이 없습니다.");
     }
 
-
 }//class end

@@ -8,7 +8,6 @@ enum InputOption {
     EXIT("4"),       //4. 종료
     INVALID_INPUT("");
 
-
     private final String input;
 
     InputOption(String input) {
@@ -24,7 +23,6 @@ enum InputOption {
         }
         return INVALID_INPUT;
     }
-
 
 }
 
