@@ -15,7 +15,7 @@ public class TodoUI {
     public void run() throws Exception {
         InputOption option;
         do {
-            System.out.println("옵션을 선택하세요: 1. 추가, 2. 삭제, 3. 조회, 4. 완료 5. 종료");
+            System.out.println("옵션을 선택하세요: 1. 추가, 2. 삭제, 3. 조회, 4. 전체 조회, 5. 완료, 6. 종료");
             String input = sc.nextLine();
             option = InputOption.of(input);
 
@@ -32,6 +32,14 @@ public class TodoUI {
                     select();
                     break;
 
+                case SELECTALL:        //전체 할 일 목록 조회
+                    selectAll();
+                    break;
+
+                case COMPLETE:      //완료
+                    complete();
+                    break;
+
                 case EXIT:          //종료
                     System.out.println("프로그램을 종료합니다.");
                     return;
@@ -39,7 +47,6 @@ public class TodoUI {
                 case INVALID_INPUT:
                     System.out.println("잘못된 입력입니다.");
                     break;
-
             }
         } while (true);
     }
@@ -89,5 +96,22 @@ public class TodoUI {
             System.out.println("해당 ID의 할 일이 없습니다.");
         }
     }
+
+    private void complete() {
+        int id = getInput("완료하고자 하는 할 일의 ID를 입력하세요.");
+
+        String content = todoManager.complete(id);
+        if (content != null) {
+            System.out.println("할 일 ID: " + id + " 내용: " + content);
+        } else {
+            System.out.println("해당 ID의 할 일이 없습니다.");
+        }
+    }
+
+    private void selectAll() {
+        System.out.println("<전체 할 일 목록>");
+        todoManager.selectAll();
+    }
+
 
 }//class end
