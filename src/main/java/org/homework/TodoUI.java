@@ -1,5 +1,6 @@
 package org.homework;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class TodoUI {
         InputOption option;
         do {
             System.out.println("옵션을 선택하세요: 1. 추가, 2. 삭제, 3. 조회, 4. 전체 조회, 5. 정렬 조회, 6. 완료, 7. 검색 8. 종료");
+
             String input = sc.nextLine();
             option = InputOption.of(input);
 
@@ -48,6 +50,7 @@ public class TodoUI {
                 case SEARCH:
                     search();
                     break;
+
 
                 case EXIT:          //종료
                     System.out.println("프로그램을 종료합니다.");
@@ -97,10 +100,11 @@ public class TodoUI {
 
     private void select() {
         int id = getInput("조회할 ID를 입력하세요.");
-
+      
         Todoitem todoitem = todoManager.select(id);
         if (todoitem != null) {
             System.out.println("할 일 ID: " + id + " 내용: " + todoitem.getContent());
+
         } else {
             System.out.println("해당 ID의 할 일이 없습니다.");
         }
@@ -175,4 +179,5 @@ public class TodoUI {
         String status = todoitem.getStatus().isEmpty() ? "[미완료]" : todoitem.getStatus();
         System.out.println("ID: " + todoitem.getId() + " 내용: " + todoitem.getContent() + " 상태: " + status);
     }
+
 }//class end
